@@ -115,6 +115,36 @@ echo $email->send();
 
 ## <a name="parte3">3. Composer install e update</a>
 
+```
+    composer init
+```
+
+```
+    composer install
+```
+
+```
+    composer update
+```
+
+```json
+{
+    "name": "josemalcher/workspace-composer-para-iniciantes",
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "symfony/var-dumper" : "4.1.0"
+    },
+    "authors": [
+        {
+            "name": "José Stélio R. Malcher Junior",
+            "email": "contato@josemalcher.net"
+        }
+    ]
+}
+
+```
+
+
 
 [Voltar ao Índice](#indice)
 
