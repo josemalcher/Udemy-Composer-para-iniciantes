@@ -152,6 +152,36 @@ echo $email->send();
 
 ## <a name="parte4">4. Composer require</a>
 
+- Adicionar libs
+- 
+```
+    composer require php-activerecord/php-activerecord
+```
+
+- https://getcomposer.org/doc/04-schema.md#minimum-stability
+
+```
+{
+    "name": "josemalcher/workspace-composer-para-iniciantes",
+    "minimum-stability":"stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "symfony/var-dumper" : "4.1.0",
+        "php-activerecord/php-activerecord": "^1.2"
+    },
+    "authors": [
+        {
+            "name": "José Stélio R. Malcher Junior",
+            "email": "contato@josemalcher.net"
+        }
+    ]
+}
+
+```
+
+
+- https://getcomposer.org/doc/06-config.md#preferred-install
+
 
 [Voltar ao Índice](#indice)
 
