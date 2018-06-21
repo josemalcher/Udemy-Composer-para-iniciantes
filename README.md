@@ -346,6 +346,8 @@ echo $registro->registrar();
 
 ## <a name="parte9">9. Arquivo gerado dos autoloads</a>
 
+- \vendor\composer\autoload_psr4.php
+
 
 [Voltar ao Índice](#indice)
 
