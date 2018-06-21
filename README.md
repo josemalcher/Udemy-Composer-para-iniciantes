@@ -296,6 +296,49 @@ echo $produto->create();
 
 ## <a name="parte8">8. Autoload psr4 do composer</a>
 
+```json
+{
+    "name": "josemalcher/workspace-composer-para-iniciantes",
+    "minimum-stability":"stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "symfony/var-dumper" : "4.1.0",
+        "php-activerecord/php-activerecord": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\":"app",
+            "asw\\":["services","jobs"]
+        }
+    },
+    "authors": [
+        {
+            "name": "José Stélio R. Malcher Junior",
+            "email": "contato@josemalcher.net"
+        }
+    ]
+}
+```
+
+```
+    composer dump-autoload -o
+    Generating optimized autoload files
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$produto = new app\models\Produto;
+echo $produto->create();
+
+$search = new asw\services\Search;
+echo $search->search();
+
+$registro = new asw\jobs\Register;
+echo $registro->registrar();
+```
 
 [Voltar ao Índice](#indice)
 

@@ -6,6 +6,12 @@
         "symfony/var-dumper" : "4.1.0",
         "php-activerecord/php-activerecord": "^1.2"
     },
+    "autoload": {
+        "psr-4": {
+            "app\\":"app",
+            "asw\\":["services","jobs"]
+        }
+    },
     "authors": [
         {
             "name": "José Stélio R. Malcher Junior",
