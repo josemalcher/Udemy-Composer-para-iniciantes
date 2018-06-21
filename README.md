@@ -355,12 +355,63 @@ echo $registro->registrar();
 
 ## <a name="parte10">10. Autoload das funções</a>
 
+```json
+{
+    "name": "josemalcher/workspace-composer-para-iniciantes",
+    "minimum-stability":"stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "symfony/var-dumper" : "4.1.0",
+        "php-activerecord/php-activerecord": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\":"app",
+            "asw\\":["services","jobs"]
+        },
+        "files": [
+            "functions/helpers.php",
+            "functions/teste.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "José Stélio R. Malcher Junior",
+            "email": "contato@josemalcher.net"
+        }
+    ]
+}
+
+```
+
+```php
+<?php
+
+require "vendor/autoload.php";
+
+//require "functions/helpers.php";
+
+$registro = new asw\jobs\Register;
+
+ddp($registro->registrar());
+```
+
+```
+    composer dump-autoload -o
+    Generating optimized autoload files
+```
+
 
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte11">11. Aula 11 [Extra] - Enviando emails com phpmailer e composer</a>
+
+- https://mailtrap.io/
+
+_Mailtrap is a fake SMTP server for development teams to test, view and share emails sent from the development and staging environments without spamming real customers._
+
 
 
 [Voltar ao Índice](#indice)
