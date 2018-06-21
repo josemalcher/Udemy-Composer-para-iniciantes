@@ -153,7 +153,7 @@ echo $email->send();
 ## <a name="parte4">4. Composer require</a>
 
 - Adicionar libs
-- 
+
 ```
     composer require php-activerecord/php-activerecord
 ```
@@ -189,6 +189,11 @@ echo $email->send();
 
 ## <a name="parte5">5. Versionamento dos pacotes</a>
 
+https://getcomposer.org/doc/articles/versions.md#next-significant-release-operators
+
+```
+ "phpmailer/phpmailer": "^6.0",
+```
 
 [Voltar ao Índice](#indice)
 
@@ -196,12 +201,93 @@ echo $email->send();
 
 ## <a name="parte6">6. Arquivo lock</a>
 
+- \composer.lock
+
+[O que é um arquivo .lock?](https://pt.stackoverflow.com/a/182717/2167)
+
+
+_Os arquivos .lock nesses dois casos são gerados automaticamente pelo gerenciador de pacotes (composer ou yarn) para garantir qual a versão exata seu código está utilizando.    
+Nos arquivos .json correspondentes, você geralmente tem uma constraint de versão, que quando você atualiza (usando o composer update por exemplo) irá baixar a versão mais recente daquela dependência e em seguida será gerado um arquivo .lock com as versões que ele baixou.    
+Caso exista um arquivo .lock e você execute o comando composer install, você irá receber a versão exata que está no seu .lock e não mais a versão mais recente.  
+Na ausência de um arquivo .lock, o comando install tem o mesmo comportamento do update_
+
 
 [Voltar ao Índice](#indice)
 
 ---
 
 ## <a name="parte7">7. Autoload com psr4 do PHP Fig</a>
+
+- https://www.php-fig.org/psr/psr-4/
+
+```php
+<?php
+
+namespace app\models;
+
+class Produto{
+    public function create(){
+        return 'Produto criado';
+    }
+}
+```
+
+```php
+<?php
+
+//require 'vendor/autoload.php';
+
+/**
+ * An example of a project-specific implementation.
+ *
+ * After registering this autoload function with SPL, the following line
+ * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
+ * from /path/to/project/src/Baz/Qux.php:
+ *
+ *      new \Foo\Bar\Baz\Qux;
+ *
+ * @param string $class The fully-qualified class name.
+ * @return void
+ */
+spl_autoload_register(function ($class) {
+
+    // project-specific namespace prefix
+    $prefix = 'app\\';
+
+    // base directory for the namespace prefix
+    $base_dir = __DIR__ . '/app/';
+
+    // does the class use the namespace prefix?
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        // no, move to the next registered autoloader
+        return;
+    }
+
+    // get the relative class name
+    $relative_class = substr($class, $len);
+
+    // replace the namespace prefix with the base directory, replace namespace
+    // separators with directory separators in the relative class name, append
+    // with .php
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+
+    // if the file exists, require it
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+
+require 'app/classes/Email.php';
+
+//$email = new Email;
+//$email = new app\classes\Email;
+$produto = new app\models\Produto;
+//echo $email->send();
+echo $produto->create();
+
+```
 
 
 [Voltar ao Índice](#indice)

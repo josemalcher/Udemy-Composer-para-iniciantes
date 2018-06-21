@@ -1,8 +1,10 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\PHPMailer;
+namespace app\classes;
 
-class Email extends PHPMailer
+//class Email extends PHPMailer
+class Email
 {
 
     public function send()
